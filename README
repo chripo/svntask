@@ -1,0 +1,9 @@
+svnkit based ant task
+fork from http://code.google.com/p/svntask/
+
+Update:
+-added auth support
+-update add command
+-added mkdir command
+-added copy command
+-added delete command
