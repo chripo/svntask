@@ -1,9 +1,13 @@
 svnkit based ant task
 fork from http://code.google.com/p/svntask/
 
-Update:
--added auth support
--update add command
--added mkdir command
--added copy command
--added delete command
+modification:
+-update add command with fileset support
+-added svntask auth support
+
+added:
+-cleanup command
+-copy command
+-delete command
+-mkdir command
+-unlock command
