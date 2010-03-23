@@ -1,7 +1,10 @@
 svnkit based ant task
 fork from http://code.google.com/p/svntask/
 
-see http://github.com/chripo/svntask
+source http://github.com/chripo/svntask
+wiki http://wiki.github.com/chripo/svntask
+
+version 1.0.8
 
 modification:
 -update add command with fileset support
