@@ -17,16 +17,16 @@ public class Delete extends Command {
 	private boolean force = true;
 	private boolean deleteFiles;
 	private boolean includeDirs = true;
-	private boolean dryRun;	
+	private boolean dryRun;
 	private Vector<FileSet> filesets = new Vector<FileSet>();
 
 	@Override
 	public void execute() throws Exception {
 		File file;
 		SVNWCClient wcClient = this.getTask().getSvnClient().getWCClient();
-		
+
 		if(path != null){
-			file = new File(path).getCanonicalFile();	
+			file = new File(path).getCanonicalFile();
 			this.getTask().log("delete " + file.getPath());
 			wcClient.doDelete(file, this.force, this.deleteFiles, this.dryRun);
 		} else {
@@ -48,7 +48,7 @@ public class Delete extends Command {
 					file = new File(dir, filename).getCanonicalFile();
 					this.getTask().log("delete " + file.getPath());
 					wcClient.doDelete(file, this.force, this.deleteFiles, this.dryRun);
-				}		
+				}
 			}
 		}
 	}
@@ -58,7 +58,7 @@ public class Delete extends Command {
 		if(this.filesets.size() == 0 && (this.path == null || this.path.length() == 0))
 			throw new NullPointerException("delete task: path cannot be null");
 	}
-	
+
 	/** */
 	public void setPath(String path){
 		this.path = path;
@@ -73,21 +73,21 @@ public class Delete extends Command {
 	public void setDeleteFiles(boolean deleteFiles){
 		this.deleteFiles = deleteFiles;
 	}
-	
+
 	/** */
 	public void setDryRun(boolean dryRun){
 		this.dryRun = dryRun;
 	}
-	
+
 	/** */
 	public void addFileSet(FileSet fileset){
 		if(!filesets.contains(fileset))
-			filesets.add(fileset);	    
+			filesets.add(fileset);
 	}
 
 	/** */
 	public void setIncludeDirs(boolean includeDirs) {
 		this.includeDirs = includeDirs;
 	}
-	
+
 }

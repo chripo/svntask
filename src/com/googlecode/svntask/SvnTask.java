@@ -43,10 +43,10 @@ public class SvnTask extends Task
 
 	/** */
 	private SVNClientManager manager = null;
-	
+
 	private String password;
 	private String user;
-	
+
 	/** */
 	public void setPassword(String pass){
 		this.password = pass;
@@ -56,22 +56,22 @@ public class SvnTask extends Task
 	public void setUsername(String user){
 		this.user = user;
 	}
-	
+
 	/** */
 	public void addCleanup(Cleanup cleanup){
 		this.addCommand(cleanup);
 	}
-	
+
 	/** */
 	public void addUnlock(Unlock unlock){
 		this.addCommand(unlock);
 	}
-	
+
 	/** */
 	public void addCopy(Copy cp){
 		this.addCommand(cp);
 	}
-	
+
 	/** */
 	public void addMkDir(MkDir mkdir){
 		this.addCommand(mkdir);
@@ -82,7 +82,7 @@ public class SvnTask extends Task
 	{
 		this.addCommand(add);
 	}
-	
+
 	/** */
 	public void addDelete(Delete del){
 		this.addCommand(del);
@@ -185,8 +185,8 @@ public class SvnTask extends Task
 		if (this.user != null && this.password != null){
 			ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(this.user, this.password);
 			this.manager.setAuthenticationManager(authManager);
-		} 		
-		
+		}
+
 		try
 		{
 			for (Command command : this.commands)

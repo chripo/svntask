@@ -19,7 +19,7 @@ public class Unlock extends Command {
 	public void execute() throws Exception {
 		SVNWCClient wcl = getTask().getSvnClient().getWCClient();
 		this.getTask().log("Unlock");
-		
+
 		DirectoryScanner ds;
 		File dir;
 		String[] filesInSet;
@@ -34,14 +34,14 @@ public class Unlock extends Command {
 				System.arraycopy(dirs, 0, temp, filesInSet.length, dirs.length);
 				filesInSet = temp;
 			}
-			
+
 			if(filesInSet.length > 0){
 				int pos = 0;
-				File[] paths = new File[filesInSet.length];				
-				for (String filename : filesInSet) 
-					paths[pos++] = new File(dir, filename).getCanonicalFile();														
-				
-				wcl.doUnlock(paths, breakLock);					
+				File[] paths = new File[filesInSet.length];
+				for (String filename : filesInSet)
+					paths[pos++] = new File(dir, filename).getCanonicalFile();
+
+				wcl.doUnlock(paths, breakLock);
 			}
 		}
 	}
@@ -55,13 +55,13 @@ public class Unlock extends Command {
 	public void setBreakLock(boolean breakLock) {
 		this.breakLock = breakLock;
 	}
-	
+
 	/** */
 	public void addFileSet(FileSet fileset){
 		if(!filesets.contains(fileset))
-			filesets.add(fileset);	    
+			filesets.add(fileset);
 	}
-	
+
 	/** */
 	public void setIncludeDirs(boolean includeDirs) {
 		this.includeDirs = includeDirs;

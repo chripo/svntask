@@ -16,14 +16,14 @@ public class MkDir extends Command {
 
 	@Override
 	public void execute() throws Exception {
-		
+
 		this.getTask().log("mkdir  " + path);
 
 		// Get the commit client
 		SVNCommitClient commitClient = this.getTask().getSvnClient().getCommitClient();
-		
-		SVNURL[] urlAr = { SVNURL.parseURIEncoded(path) } ;        
-		
+
+		SVNURL[] urlAr = { SVNURL.parseURIEncoded(path) } ;
+
 		// Execute SVN commit
 		SVNCommitInfo info = commitClient.doMkDir(urlAr, commitMessage, null, makeParents);
 
@@ -39,7 +39,7 @@ public class MkDir extends Command {
 	protected void validateAttributes() throws Exception {
 		if (this.path == null)
 			throw new NullPointerException("path cannot be null");
-		
+
 		if (this.commitMessage == null)
 			throw new NullPointerException("commitMessage cannot be null");
 	}

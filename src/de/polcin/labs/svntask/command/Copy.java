@@ -16,7 +16,7 @@ import com.googlecode.svntask.Command;
  */
 public class Copy extends Command {
 	private String src;
-	private String dst;	
+	private String dst;
 	private boolean isMove;
 	private boolean failOnDstExists = true;
 	private String commitMessage = "copy by svntask";
@@ -24,10 +24,10 @@ public class Copy extends Command {
 	@Override
 	public void execute() throws Exception {
 		this.getTask().log("copy "  + src + " to " + dst );
-		
-		// Get the copy client			
-		SVNCopyClient copyC = this.getTask().getSvnClient().getCopyClient();		
-		
+
+		// Get the copy client
+		SVNCopyClient copyC = this.getTask().getSvnClient().getCopyClient();
+
 		SVNRevision srcRev;
 		SVNURL srcUrl;
 		if(src.startsWith("http") || src.startsWith("svn")){
@@ -37,16 +37,16 @@ public class Copy extends Command {
 			srcRev = SVNRevision.WORKING;
 			srcUrl = SVNURL.fromFile(new File(src).getCanonicalFile());
 		}
-		
-		SVNCopySource source = new SVNCopySource(SVNRevision.UNDEFINED, srcRev, srcUrl ); 		
-				
+
+		SVNCopySource source = new SVNCopySource(SVNRevision.UNDEFINED, srcRev, srcUrl );
+
 		SVNURL dstPath = dst.startsWith("http") || dst.startsWith("svn") ?  SVNURL.parseURIEncoded(dst) : SVNURL.fromFile(new File(dst).getCanonicalFile());
-			
+
 		SVNCommitInfo nfo = copyC.doCopy(new SVNCopySource[]{source}, dstPath, isMove, true, failOnDstExists, commitMessage, null);
-		
-		SVNErrorMessage err = nfo.getErrorMessage();		
+
+		SVNErrorMessage err = nfo.getErrorMessage();
 		if(err != null)
-			this.getTask().log("error on copy resources: " + err.getMessage() );					
+			this.getTask().log("error on copy resources: " + err.getMessage() );
 	}
 
 	@Override

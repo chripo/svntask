@@ -25,9 +25,9 @@ public class Cleanup extends Command {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
+
 	/**
-	 * @param deleteWCProperties boolean - if true, removes DAV specific "svn:wc:" properties from the working copy 
+	 * @param deleteWCProperties boolean - if true, removes DAV specific "svn:wc:" properties from the working copy
 	 */
 	public void setDeleteWCProperties(boolean deleteWCProperties) {
 		this.deleteWCProperties = deleteWCProperties;

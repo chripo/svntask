@@ -38,10 +38,10 @@ public class Add extends Command
 	{
 		File file;
 		SVNWCClient wcClient = this.getTask().getSvnClient().getWCClient();
-		
+
 		if(path != null){
 			file = new File(path).getCanonicalFile();
-		
+
 			this.getTask().log("add " + file.getPath());
 			wcClient.doAdd(file, this.force, this.mkdir, this.climbUnversionedParents, this.depth, this.includeIgnored, this.makeParents);
 		} else {
@@ -56,7 +56,7 @@ public class Add extends Command
 					file = new File(dir,filename).getCanonicalFile();
 					this.getTask().log("add " + file.getCanonicalPath());
 					wcClient.doAdd(file, this.force, this.mkdir, this.climbUnversionedParents, this.depth, this.includeIgnored, this.makeParents);
-				}		
+				}
 			}
 		}
 	}
@@ -110,9 +110,9 @@ public class Add extends Command
 	{
 		this.makeParents = makeParents;
 	}
-	
+
 	public void addFileSet(FileSet fileset){
 		if(!filesets.contains(fileset))
-			filesets.add(fileset);	    
+			filesets.add(fileset);
 	}
 }
