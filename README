@@ -1,0 +1,28 @@
+svnkit based ant tasks
+fork from http://code.google.com/p/svntask/
+
+source http://git.christoph-polcin.com/ant/svntask
+
+version 1.0.8.1
+
+modification:
+- bundled with svnkit 1.3.6-v1
+- update Add command with fileset support
+- add svntask Auth support
+- added new commands
+
+available commands:
+- Add
+- Checkout
+- Commit
+- Info
+- Log
+- Ls
+- Status
+- Switch
+- Update
+- Cleanup
+- Copy
+- Delete
+- Mkdir
+- Unlock

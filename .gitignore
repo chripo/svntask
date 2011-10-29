@@ -1,1 +1,10 @@
 _eclipse
+build.properties
+jar.properties
+user.properties
+doc
+*.swp
+target/classes
+target/javadoc
+target/svntask-*
+target/*.jar
