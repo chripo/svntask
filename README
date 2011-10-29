@@ -4,9 +4,10 @@ fork from http://code.google.com/p/svntask/
 source http://github.com/chripo/svntask
 wiki http://wiki.github.com/chripo/svntask
 
-version 1.0.8
+version 1.0.8.1
 
 modification:
+-bundled with svnkit 1.3.6-v1
 -update add command with fileset support
 -add svntask auth support
 

@@ -6,7 +6,7 @@
 -->
 <project name="svntask" default="compile" basedir=".">
 
-	<property file="user.properties" />	
+	<property file="user.properties" />
 	<property file="build.properties" />
 	<property file="jar.properties" />
 
@@ -32,7 +32,7 @@
 	<target name="javac" depends="init">
 		<mkdir dir="${build.dir}/classes"/>
 
-		<javac 
+		<javac
 			srcdir="${base.dir}/src"
 			destdir="${build.dir}/classes"
 			includeAntRuntime="false"
@@ -40,17 +40,17 @@
 			source="${ant.build.javac.source}"
 			target="${ant.build.javac.target}"
 			deprecation="${build.deprecation}">
-			
+
 			<classpath refid="svntask.classpath"/>
 		</javac>
 
-		<copy file="${base.dir}/src/svntask.xml" todir="${build.dir}/classes/com/googlecode/svntask/" />	
+		<copy file="${base.dir}/src/svntask.xml" todir="${build.dir}/classes/com/googlecode/svntask/" />
 	</target>
 
 	<target name="jar" depends="javac, version">
 		<jar jarfile="${build.dir}/svntask.jar">
 			<fileset dir="${build.dir}/classes" />
-	
+
 			<manifest>
 				<attribute name="Specification-Version" value="${version}" />
 				<attribute name="Implementation-Version" value="${TODAY}" />
@@ -58,7 +58,7 @@
 			</manifest>
 		</jar>
 	</target>
-	
+
 	<target name="javadoc" depends="init">
 		<property name="javadoc.dir" location="${build.dir}/javadoc" />
 		<mkdir dir="${javadoc.dir}"/>
@@ -76,7 +76,7 @@
 			</fileset>
 			<group title="svntask" packages="com.googlecode.svntask*"/>
 			<doctitle><![CDATA[<h1>svntask</h1>]]></doctitle>
-			<bottom><![CDATA[<i>Copyright &#169; ${YEAR} Jon Scott Stevens. All Rights Reserved. Build version: ${version}</i>]]></bottom>
+			<bottom><![CDATA[<i>Copyright &#169; ${YEAR} Jon Scott Stevens, Christoph Polcin. All Rights Reserved. Build version: ${version}</i>]]></bottom>
 		</javadoc>
 	</target>
 
@@ -108,7 +108,7 @@
 			<fileset dir="${build.dir}" includes="**/*"/>
 		</delete>
 	</target>
-	
+
 	<target name="init-dist">
 		<!-- <input addproperty="version" message="Version number?" /> -->
 		<property name="version" value="${revisionVersion}" />
@@ -145,13 +145,13 @@
 
 		<copy todir="${build.dist.dir}/src">
 			<fileset dir="${base.dir}/src">
-			 	<include name="**" />
+				<include name="**" />
 			</fileset>
 		</copy>
-		
+
 		<dirname property="build.dist.dir.dirname" file="${build.dist.dir}" />
 		<basename property="build.dist.dir.basename" file="${build.dist.dir}" />
-		
+
 		<zip zipfile="${build.dist.zip}" basedir="${build.dist.dir.dirname}">
 			<include name="${build.dist.dir.basename}/**" />
 		</zip>
