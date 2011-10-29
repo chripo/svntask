@@ -78,7 +78,6 @@ public class Log extends Command
 	{
 		return new ISVNLogEntryHandler()
 		{
-			@Override
 			public void handleLogEntry(SVNLogEntry entry) throws SVNException
 			{
 				logBuffer.append(ITEM_SEPARATOR).append(LINE_SEPARATOR)
@@ -121,73 +120,73 @@ public class Log extends Command
 	}
 
 	/**
-	 * the svn url to use (as opposed to the path of a working copy)
-	 */
+	* the svn url to use (as opposed to the path of a working copy)
+	*/
 	public void setUrl(String url)
 	{
 		this.url = url;
 	}
 
 	/**
-	 * the path to the file
-	 */
+	* the path to the file
+	*/
 	public void setPath(String path)
 	{
 		this.path = path;
 	}
 
 	/**
-	 * the starting revision
-	 */
+	* the starting revision
+	*/
 	public void setStartRevision(String startRevision)
 	{
 		this.startRevision = startRevision;
 	}
 
 	/**
-	 * the ending revision
-	 */
+	* the ending revision
+	*/
 	public void setEndRevision(String endRevision)
 	{
 		this.endRevision = endRevision;
 	}
 
 	/**
-	 * the max number of log messages to return
-	 * must be positive.  use 0 for no limit
-	 */
+	* the max number of log messages to return
+	* must be positive.  use 0 for no limit
+	*/
 	public void setLimit(long limit)
 	{
 		this.limit = limit;
 	}
 
 	/**
-	 * should svn logging stop on copy
-	 */
+	* should svn logging stop on copy
+	*/
 	public void setStopOnCopy(boolean stopOnCopy)
 	{
 		this.stopOnCopy = stopOnCopy;
 	}
 
 	/**
-	 * set to true to report of all changed paths for every revision being processed
-	 */
+	* set to true to report of all changed paths for every revision being processed
+	*/
 	public void setDiscoverChangedPaths(boolean discoverChangedPaths)
 	{
 		this.discoverChangedPaths = discoverChangedPaths;
 	}
 
 	/**
-	 * if true logs will include changes merged in from elsewhere
-	 */
+	* if true logs will include changes merged in from elsewhere
+	*/
 	public void setIncludeMergedRevisions(boolean includeMergedRevisions)
 	{
 		this.includeMergedRevisions = includeMergedRevisions;
 	}
 
 	/**
-	 * the log output goes here
-	 */
+	* the log output goes here
+	*/
 	public void setLogProperty(String logProperty)
 	{
 		this.logProperty = logProperty;
