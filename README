@@ -1,17 +1,20 @@
 svnkit based ant tasks
 fork from http://code.google.com/p/svntask/
 
-source http://git.christoph-polcin.com/ant/svntask
+source http://git.christoph-polcin.com/ant/svntask [1]
+mirror https://github.com/chripo/svntask/ [2] (out of date)
 
 version 1.0.8.1
 
-modification:
+modification
+============
 - bundled with svnkit 1.3.6-v1
 - update Add command with fileset support
 - add svntask Auth support
 - added new commands
 
-available commands:
+available commands
+==================
 - Add
 - Checkout
 - Commit
@@ -26,3 +29,109 @@ available commands:
 - Delete
 - Mkdir
 - Unlock
+
+install
+=======
+- clone or download the repository from [1]
+- compile the project by running ant
+- copy target/svntask.jar into your project lib dir
+- add the initialization code and the required commands
+  to your project build.xml
+
+
+# initialization code
+<pre><code><target name="svntask-init" >
+  <path id="cp.anttask">
+    <fileset dir="${basedir}/libs">
+      <include name="*.jar"/>
+    </ fileset>
+  </ path>
+  <taskdef name="svn" classname="com.googlecode.svntask.SvnTask"
+   classpathref="cp.anttask"/>
+</ target></code></pre>
+
+
+Authentication
+--------------
+<pre><code>
+  <svn username="user"  password="password" >
+     ... commands ...
+  </ svn>
+</code></pre>
+
+
+Commands
+------------
+
+# cleanup
+<pre><code><target name="svn-cleanup" depends="svntask-init">
+  <svn>
+    <cleanup path="${project.src}" deleteWCProperties="false"/>
+  </ svn>
+</ target></code></pre>
+
+
+# copy
+<pre><code><target name="svn-copy" depends="svntask-init">
+  <svn>
+    <copy
+      failOnDstExists="true"
+      move="false"
+      src="${from.file / from.url}"
+      dst="${to.file / to.url}"
+      commitMessage="copy by svntask"
+    />
+  </ svn>
+</ target></code></pre>
+
+
+# delete
+<pre><code><target name="svn-delete" depends="svntask-init">
+  <svn>
+    <delete
+      force="true"
+      deleteFiles="false"
+      includeDirs="true"
+      dryRun="false"
+      path="/path/to/delete"
+    />
+
+    <delete
+      force="true"
+      deleteFiles="false"
+      includeDirs="true"
+      dryRun="false">
+      <fileset>
+        ...
+      </ fileset>
+    </ delete>
+  </ svn>
+</ target></code></pre>
+
+
+# mkdir
+<pre><code><target name="svn-mkdir" depends="svntask-init">
+  <svn>
+    <mkdir
+      makeParents="true"
+      path="path/to/create"
+      commitMessage="mkdir by svntask"
+    />
+  </ svn>
+</ target></code></pre>
+
+
+# unlock
+
+<pre><code><target name="svn-unlock" depends="svntask-init">
+  <svn>
+    <unlock
+      breakLock="true"
+      includeDirs="true">
+        <fileset>
+          ...
+        </ fileset>
+    </ unlock>
+  </ svn>
+</ target></code></pre>
+
