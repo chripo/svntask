@@ -1,8 +1,12 @@
-svnkit based ant tasks
-fork from http://code.google.com/p/svntask/
+  _   _   _   _   _   _   _
+ / \ / \ / \ / \ / \ / \ / \
+( s | v | n | t | a | s | k )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/
 
-source http://git.christoph-polcin.com/ant/svntask [1]
-mirror https://github.com/chripo/svntask/ [2] (out of date)
+svnkit based ant tasks
+fork from [svntask](http://code.google.com/p/svntask/)
+
+[source](https://git.christoph-polcin.com/svntask)
 
 version 1.0.8.1
 
